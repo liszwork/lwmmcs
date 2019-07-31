@@ -11,6 +11,10 @@ namespace mmCreaterCs
     {
         public XmlSample()
         {
+        }
+
+        public void Load()
+        {
             XDocument xml = XDocument.Load(@"C:\tmp\test.xml"); // fopen/close不要
             XElement table = xml.Element("価格表");
             var rows = table.Elements("データ");
@@ -43,11 +47,6 @@ namespace mmCreaterCs
                 // 出力
                 Console.WriteLine("[jp/en]" + jp + "/" + en + ", rate: " + price);
             }
-        }
-
-        public load()
-        {
-
         }
     }
 }

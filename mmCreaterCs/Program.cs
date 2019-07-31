@@ -16,6 +16,9 @@ namespace mmCreaterCs
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            Node node = new Node();
+
             Application.Run(new Form1());
         }
     }
