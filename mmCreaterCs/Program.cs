@@ -32,6 +32,7 @@ namespace mmCreaterCs
         {
             testCreateXML();
             testCreateXML2();
+            testCreateXML3();
 
             Node node = new Node("item01");
         }
@@ -79,6 +80,16 @@ namespace mmCreaterCs
             List<string> lines = System.IO.File.ReadAllLines(path).ToList();
             lines.RemoveAt(0);
             System.IO.File.WriteAllLines(path, lines);
+        }
+        static void testCreateXML3()
+        {
+            Node root = new Node("root");
+            Node item1 = new Node("item1");
+            Node item2 = new Node("item2");
+            root.AddChild(item1);
+            root.AddChild(item2);
+
+            root.ShowChild();
         }
     }
 }

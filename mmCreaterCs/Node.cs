@@ -1,4 +1,10 @@
-﻿using System;
+﻿/**
+ * refs.
+ * https://webbibouroku.com/Blog/Article/linq-to-xml
+ * http://blog.hiros-dot.net/?p=5159
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +17,18 @@ namespace mmCreaterCs
     {
         private Logger logger = new Logger();
         private ulong uniqueNo = 0xFFFFFFFF;
-        public Node()
+        private XElement element = null;
+        /// <summary>親要素</summary>
+        private XElement parent = null;
+        /// <summary>子要素</summary>
+        private List<Node> child = new List<Node>();
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public Node(string text, string position = "")
         {
-            GetDatetimeText();
+            element = CreateNode(text, position);
         }
 
         /// <summary>
@@ -34,13 +49,13 @@ namespace mmCreaterCs
                 { "MODIFIED", string.Format("{0:013d}", int.Parse(uniqueNo)) },
                 { "TEXT", text }
             };
-            if ( 0 < position.Length )
+            if ( position == "" )
             {
                 attr.Add("POSITION", position);
             }
             AddAttr(attr, elm);
 
-            return null;
+            return elm;
         }
 
 #if false
@@ -95,7 +110,28 @@ namespace mmCreaterCs
         /// <returns></returns>
         private string GenerateUniqueNo()
         {
-            return "";
+            return "1";
+        }
+
+        public bool AddChild(Node node)
+        {
+            child.Add(node);
+            return true;
+        }
+
+        public bool DeleteChild()
+        {
+            return true;
+        }
+
+        public void ShowChild()
+        {
+            StringBuilder sb = new StringBuilder(element.ToString());
+            foreach ( Node node in child )
+            {
+                sb.AppendFormat("\r\n  {0}", node.element.ToString());
+            }
+            logger.Log(sb.ToString());
         }
     }
 }
