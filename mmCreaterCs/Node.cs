@@ -1,7 +1,10 @@
 ﻿/**
  * refs.
+ * XML:
  * https://webbibouroku.com/Blog/Article/linq-to-xml
  * http://blog.hiros-dot.net/?p=5159
+ * StringBuilder:
+ * https://www.sejuku.net/blog/43625#StringBuilder
  */
 
 using System;
@@ -17,11 +20,15 @@ namespace mmCreaterCs
     {
         private Logger logger = new Logger();
         private ulong uniqueNo = 0xFFFFFFFF;
+        private string name = "";
         private XElement element = null;
         /// <summary>親要素</summary>
         private XElement parent = null;
         /// <summary>子要素</summary>
         private List<Node> child = new List<Node>();
+
+        public string Name { get => this.name; set => this.name = value; }
+        internal List<Node> Childs { get => this.child; set => this.child = value; }
 
         /// <summary>
         /// コンストラクタ
@@ -39,6 +46,7 @@ namespace mmCreaterCs
         /// <returns></returns>
         public XElement CreateNode(string text, string position = "")
         {
+            name = text;
             string uniqueNo = GenerateUniqueNo();
             XElement elm = new XElement("node");
             // TODO: ユニーク値を何かしらで管理すべき？
@@ -115,7 +123,7 @@ namespace mmCreaterCs
 
         public bool AddChild(Node node)
         {
-            child.Add(node);
+            Childs.Add(node);
             return true;
         }
 
@@ -127,7 +135,7 @@ namespace mmCreaterCs
         public void ShowChild()
         {
             StringBuilder sb = new StringBuilder(element.ToString());
-            foreach ( Node node in child )
+            foreach ( Node node in Childs )
             {
                 sb.AppendFormat("\r\n  {0}", node.element.ToString());
             }

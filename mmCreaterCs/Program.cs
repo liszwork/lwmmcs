@@ -25,7 +25,7 @@ namespace mmCreaterCs
 
 
 
-            //Application.Run(new Form1());
+            Application.Run(new Form1());
         }
 
         static void testNode()
@@ -33,8 +33,6 @@ namespace mmCreaterCs
             testCreateXML();
             testCreateXML2();
             testCreateXML3();
-
-            Node node = new Node("item01");
         }
 
         static void testCreateXML()
