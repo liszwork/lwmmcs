@@ -62,7 +62,7 @@ namespace mmCreaterCs
         {
             // コンボボックスの選択
             string selectedItem = comboBox1.SelectedItem.ToString();
-
+            manager.SetCurrentNode4Name(selectedItem);
         }
 
         private void buttonShow_Click(object sender, EventArgs e)

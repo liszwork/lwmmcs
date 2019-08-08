@@ -85,11 +85,13 @@ namespace mmCreaterCs
                 retStringBuilder.Append("-");
             }
             retStringBuilder.AppendLine(node.Name);
+            retStringBuilder.Append("\n");
             level++;
             // 自分の子供
             foreach ( Node childNode in node.Childs )
             {
-                retStringBuilder.AppendLine(ChildText(level, childNode));
+                retStringBuilder.Append(ChildText(level, childNode));
+                retStringBuilder.Append("\n");
             }
             return retStringBuilder.ToString();
         }
