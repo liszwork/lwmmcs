@@ -18,14 +18,21 @@ namespace mmCreaterCs
 {
     class Node
     {
-        private Logger logger = new Logger();
-        private ulong uniqueNo = 0xFFFFFFFF;
+        // Nodeの情報
         private string name = "";
+        private string created = "";
+        private string id = "";
+        private string modified = "";
+
+        // Nodeのオブジェクト
         private XElement element = null;
         /// <summary>親要素</summary>
         private XElement parent = null;
         /// <summary>子要素</summary>
         private List<Node> child = new List<Node>();
+
+        // ロガー
+        private Logger logger = new Logger();
 
         public string Name { get => this.name; set => this.name = value; }
         internal List<Node> Childs { get => this.child; set => this.child = value; }
@@ -33,35 +40,44 @@ namespace mmCreaterCs
         /// <summary>
         /// コンストラクタ
         /// </summary>
+        /// <param name="text">Nodeのテキスト</param>
+        /// <param name="position">"right"/"left"</param>
         public Node(string text, string position = "")
         {
-            element = CreateNode(text, position);
+            this.element = this.CreateNode(text, position);
         }
 
         /// <summary>
-        /// 
+        /// Nodeの生成
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="position"></param>
-        /// <returns></returns>
-        public XElement CreateNode(string text, string position = "")
+        /// <param name="name">Nodeのテキスト</param>
+        /// <param name="position">"right"/"left"</param>
+        /// <returns>Nodeエレメント</returns>
+        public XElement CreateNode(string name, string position = "")
         {
-            name = text;
-            string uniqueNo = GenerateUniqueNo();
+            this.name = name;
+
+            // 日時から情報を生成
+            System.DateTime dt = System.DateTime.Now;
+            this.created = String.Format("{0:yyMMddHHmmssf", dt);
+            this.id = String.Format("ID_{0:yyMMddHHmmssf", dt);
+            this.modified = created;
+
             XElement elm = new XElement("node");
             // TODO: ユニーク値を何かしらで管理すべき？
             Dictionary<string, string> attr = new Dictionary<string, string>()
             {
-                { "CREATED", string.Format("{0:013d}", int.Parse(uniqueNo)) },
-                { "ID", "ID_" + string.Format("{0:09d}", int.Parse(uniqueNo)) },
-                { "MODIFIED", string.Format("{0:013d}", int.Parse(uniqueNo)) },
-                { "TEXT", text }
+                { "CREATED", this.created },
+                { "ID", this.id },
+                { "MODIFIED", this.modified },
+                { "TEXT", this.name }
             };
+
             if ( position == "" )
             {
                 attr.Add("POSITION", position);
             }
-            AddAttr(attr, elm);
+            this.AddAttr(attr, elm);
 
             return elm;
         }
@@ -97,49 +113,39 @@ namespace mmCreaterCs
             }
             return editNode;
         }
+        
 
         /// <summary>
-        /// 日時文字列の取得
+        /// 子要素の追加
         /// </summary>
+        /// <param name="node"></param>
         /// <returns></returns>
-        private string GetDatetimeText()
-        {
-            System.DateTime dt = System.DateTime.Now;
-            string datetime = String.Format("{0:yyyyMMddHHmmssfff000", dt);
-            string msg = String.Format("{0:yyyy年MM月dd日(ddd) HH時mm分ss秒fff}", dt) + "\r\n"
-                + datetime;
-            logger.Log(msg);
-            return datetime;
-        }
-
-        /// <summary>
-        /// ユニーク番号文字列の生成
-        /// </summary>
-        /// <returns></returns>
-        private string GenerateUniqueNo()
-        {
-            return "1";
-        }
-
         public bool AddChild(Node node)
         {
-            Childs.Add(node);
+            this.Childs.Add(node);
             return true;
         }
 
+        /// <summary>
+        /// TODO: 子要素の削除
+        /// </summary>
+        /// <returns></returns>
         public bool DeleteChild()
         {
             return true;
         }
 
+        /// <summary>
+        /// 子要素をログに出力
+        /// </summary>
         public void ShowChild()
         {
-            StringBuilder sb = new StringBuilder(element.ToString());
-            foreach ( Node node in Childs )
+            StringBuilder sb = new StringBuilder(this.element.ToString());
+            foreach ( Node node in this.Childs )
             {
                 sb.AppendFormat("\r\n  {0}", node.element.ToString());
             }
-            logger.Log(sb.ToString());
+            this.logger.Log(sb.ToString());
         }
     }
 }
