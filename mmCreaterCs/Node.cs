@@ -66,7 +66,6 @@ namespace mmCreaterCs
             this.modified = this.created;
 
             XElement elm = new XElement("node");
-            // TODO: ユニーク値を何かしらで管理すべき？
             Dictionary<string, string> attr = new Dictionary<string, string>()
             {
                 { "CREATED", this.created },
