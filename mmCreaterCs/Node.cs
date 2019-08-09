@@ -82,21 +82,6 @@ namespace mmCreaterCs
             return elm;
         }
 
-#if false
-        /// <summary>
-        /// 属性の作成
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="val"></param>
-        /// <returns></returns>
-        //private XAttribute CreateAttr(string key, string val)
-        //{
-        //    logger.Log("CreateAttr [" + key + "," + val + "]");
-        //    XAttribute attr = new XAttribute(key, val);
-        //    return attr;
-        //}
-#endif
-
         /// <summary>
         /// Nodeに属性を追加する
         /// </summary>
@@ -114,7 +99,6 @@ namespace mmCreaterCs
             return editNode;
         }
         
-
         /// <summary>
         /// 子要素の追加
         /// </summary>
