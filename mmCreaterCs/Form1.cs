@@ -30,6 +30,7 @@ namespace mmCreaterCs
         {
             if ( !isCreatedRoot )
             {
+                // root
                 manager = new NodeManager(text);
                 labelCurrentName.Text = manager.GetCurrentName();
                 isCreatedRoot = true;
@@ -90,7 +91,13 @@ namespace mmCreaterCs
 
         private void buttonPrevCurrent_Click(object sender, EventArgs e)
         {
-
+            string name = this.manager.PrevNode();
+            if ( name != "" )
+            {
+                labelCurrentName.Text = name;
+            }
+            // 現在Nodeの子要素をコンボボックスにセット
+            updateList();
         }
     }
 }

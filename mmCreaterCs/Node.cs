@@ -27,7 +27,7 @@ namespace mmCreaterCs
         // Nodeのオブジェクト
         private XElement element = null;
         /// <summary>親要素</summary>
-        private XElement parent = null;
+        private Node parent = null;
         /// <summary>子要素</summary>
         private List<Node> child = new List<Node>();
 
@@ -36,15 +36,17 @@ namespace mmCreaterCs
 
         public string Name { get => this.name; set => this.name = value; }
         internal List<Node> Childs { get => this.child; set => this.child = value; }
+        public Node Parent { get => this.parent; set => this.parent = value; }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="text">Nodeのテキスト</param>
         /// <param name="position">"right"/"left"</param>
-        public Node(string text, string position = "")
+        public Node(string text, string position = "", Node parent = null)
         {
             this.element = this.CreateNode(text, position);
+            this.parent = parent;
         }
 
         /// <summary>
@@ -59,9 +61,9 @@ namespace mmCreaterCs
 
             // 日時から情報を生成
             System.DateTime dt = System.DateTime.Now;
-            this.created = String.Format("{0:yyMMddHHmmssf", dt);
-            this.id = String.Format("ID_{0:yyMMddHHmmssf", dt);
-            this.modified = created;
+            this.created = String.Format("{0:yyMMddHHmmssf}", dt);
+            this.id = String.Format("ID_{0:yyMMddHHmmssf}", dt);
+            this.modified = this.created;
 
             XElement elm = new XElement("node");
             // TODO: ユニーク値を何かしらで管理すべき？

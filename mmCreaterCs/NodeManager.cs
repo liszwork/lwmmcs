@@ -34,7 +34,13 @@ namespace mmCreaterCs
                 return false;
             }
 
-            Node node = new Node(text);
+            string position = "";
+            if ( current.Parent == this.root )
+            {
+                // TODO: 現在位置が右固定
+                position = "right";
+            }
+            Node node = new Node(text, position, current);
             current.AddChild(node);
 
             Console.WriteLine("==============");
@@ -141,6 +147,22 @@ namespace mmCreaterCs
         public string GetCurrentName()
         {
             return current.Name;
+        }
+
+        /// <summary>
+        /// カレントの親を選択し、名称を返す。
+        /// rootの場合、""を返す。
+        /// </summary>
+        /// <returns>親Node名</returns>
+        public string PrevNode()
+        {
+            if ( this.current.Parent == null )
+            {
+                return "";
+            }
+            this.current = this.current.Parent;
+            string name = this.current.Name;
+            return (name == null) ? "" : name;
         }
     }
 }
