@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace mmCreaterCs
 {
@@ -12,6 +13,11 @@ namespace mmCreaterCs
          * TOOD: ファイル未オープン時はファイル選択ダイアログで選択させる。\nそうでない場合、このファイル名を使用する。
          */
         private static string targetFile = "";
+
+        private static XElement CollectNode(Node node, XElement elm)
+        {
+            return elm
+        }
 
         /// <summary>
         /// 保存
@@ -26,7 +32,14 @@ namespace mmCreaterCs
                 return false;   // 選択不正
             }
 
+            // root
 
+            // 1番外枠の要素
+            XElement map = new XElement("map");
+            map.SetAttributeValue("version", "1.0.1");
+            map.Add(root);
+
+            XDocument xml = new XDocument(map);
 
             return true;
         }
