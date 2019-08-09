@@ -33,20 +33,26 @@
             this.buttonEnter = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.buttonShow = new System.Windows.Forms.Button();
+            this.buttonSetCurrent = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelCurrentName = new System.Windows.Forms.Label();
+            this.buttonPrevCurrent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textOutput
             // 
             this.textOutput.Font = new System.Drawing.Font("游ゴシック Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textOutput.Location = new System.Drawing.Point(0, 0);
+            this.textOutput.Location = new System.Drawing.Point(348, 12);
             this.textOutput.Multiline = true;
             this.textOutput.Name = "textOutput";
-            this.textOutput.Size = new System.Drawing.Size(241, 450);
+            this.textOutput.Size = new System.Drawing.Size(337, 426);
             this.textOutput.TabIndex = 0;
             // 
             // textInput
             // 
-            this.textInput.Location = new System.Drawing.Point(247, 14);
+            this.textInput.Location = new System.Drawing.Point(12, 77);
             this.textInput.Name = "textInput";
             this.textInput.Size = new System.Drawing.Size(234, 19);
             this.textInput.TabIndex = 0;
@@ -54,7 +60,7 @@
             // 
             // buttonEnter
             // 
-            this.buttonEnter.Location = new System.Drawing.Point(487, 12);
+            this.buttonEnter.Location = new System.Drawing.Point(252, 75);
             this.buttonEnter.Name = "buttonEnter";
             this.buttonEnter.Size = new System.Drawing.Size(75, 23);
             this.buttonEnter.TabIndex = 1;
@@ -65,27 +71,89 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(247, 106);
+            this.comboBox1.Location = new System.Drawing.Point(12, 157);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.Size = new System.Drawing.Size(234, 20);
             this.comboBox1.TabIndex = 2;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // buttonShow
             // 
-            this.buttonShow.Location = new System.Drawing.Point(487, 104);
+            this.buttonShow.Location = new System.Drawing.Point(252, 261);
             this.buttonShow.Name = "buttonShow";
             this.buttonShow.Size = new System.Drawing.Size(75, 23);
             this.buttonShow.TabIndex = 3;
-            this.buttonShow.Text = "show";
+            this.buttonShow.Text = "show nodes";
             this.buttonShow.UseVisualStyleBackColor = true;
             this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
+            // 
+            // buttonSetCurrent
+            // 
+            this.buttonSetCurrent.Location = new System.Drawing.Point(252, 155);
+            this.buttonSetCurrent.Name = "buttonSetCurrent";
+            this.buttonSetCurrent.Size = new System.Drawing.Size(75, 23);
+            this.buttonSetCurrent.TabIndex = 4;
+            this.buttonSetCurrent.Text = "set current";
+            this.buttonSetCurrent.UseVisualStyleBackColor = true;
+            this.buttonSetCurrent.Click += new System.EventHandler(this.buttonSetCurrent_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 12);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "current node ->";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 12);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "add node";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 142);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 12);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "select current";
+            // 
+            // labelCurrentName
+            // 
+            this.labelCurrentName.AutoSize = true;
+            this.labelCurrentName.Location = new System.Drawing.Point(103, 9);
+            this.labelCurrentName.Name = "labelCurrentName";
+            this.labelCurrentName.Size = new System.Drawing.Size(11, 12);
+            this.labelCurrentName.TabIndex = 5;
+            this.labelCurrentName.Text = "-";
+            // 
+            // buttonPrevCurrent
+            // 
+            this.buttonPrevCurrent.Location = new System.Drawing.Point(252, 184);
+            this.buttonPrevCurrent.Name = "buttonPrevCurrent";
+            this.buttonPrevCurrent.Size = new System.Drawing.Size(75, 23);
+            this.buttonPrevCurrent.TabIndex = 6;
+            this.buttonPrevCurrent.Text = "prev current";
+            this.buttonPrevCurrent.UseVisualStyleBackColor = true;
+            this.buttonPrevCurrent.Click += new System.EventHandler(this.buttonPrevCurrent_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(697, 450);
+            this.Controls.Add(this.buttonPrevCurrent);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelCurrentName);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonSetCurrent);
             this.Controls.Add(this.buttonShow);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonEnter);
@@ -93,6 +161,7 @@
             this.Controls.Add(this.textOutput);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,6 +174,12 @@
         private System.Windows.Forms.Button buttonEnter;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button buttonShow;
+        private System.Windows.Forms.Button buttonSetCurrent;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelCurrentName;
+        private System.Windows.Forms.Button buttonPrevCurrent;
     }
 }
 

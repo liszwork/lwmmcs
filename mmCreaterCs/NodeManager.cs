@@ -45,7 +45,11 @@ namespace mmCreaterCs
             return true;
         }
 
-        public List<string> GetChildNames()
+        /// <summary>
+        /// rootの子要素を取得
+        /// </summary>
+        /// <returns>子要素の名称リスト</returns>
+        public List<string> GetRootChildNames()
         {
             List<string> names = new List<string>();
             foreach ( Node item in root.Childs )
@@ -55,6 +59,25 @@ namespace mmCreaterCs
             return names;
         }
 
+        /// <summary>
+        /// カレントの子要素を取得
+        /// </summary>
+        /// <returns>子要素の名称リスト</returns>
+        public List<string> GetCurrentChildNames()
+        {
+            List<string> names = new List<string>();
+            foreach ( Node item in current.Childs )
+            {
+                names.Add(item.Name);
+            }
+            return names;
+        }
+
+        /// <summary>
+        /// 対象名称の要素をカレントにセット
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public bool SetCurrentNode4Name(string name)
         {
             if ( name == "" )
@@ -74,8 +97,13 @@ namespace mmCreaterCs
             return false;
         }
 
-        // TODO: 表示文言の作成うまくいってない
-        private string ChildText(int indentLevel, Node node)
+        /// <summary>
+        /// Node表示情報の取得
+        /// </summary>
+        /// <param name="indentLevel"></param>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        private string GetNodeInfoText(int indentLevel, Node node)
         {
             int level = indentLevel;
             StringBuilder retStringBuilder = new StringBuilder();
@@ -90,16 +118,29 @@ namespace mmCreaterCs
             // 自分の子供
             foreach ( Node childNode in node.Childs )
             {
-                retStringBuilder.Append(ChildText(level, childNode));
+                retStringBuilder.Append(GetNodeInfoText(level, childNode));
                 retStringBuilder.Append("\n");
             }
             return retStringBuilder.ToString();
         }
 
+        /// <summary>
+        /// 全Nodeの表示情報を取得
+        /// </summary>
+        /// <returns></returns>
         public string ShowAll()
         {
             StringBuilder retStringBuilder = new StringBuilder();
-            return ChildText(0, root);
+            return GetNodeInfoText(0, root);
+        }
+
+        /// <summary>
+        /// カレントNodeの名称取得
+        /// </summary>
+        /// <returns></returns>
+        public string GetCurrentName()
+        {
+            return current.Name;
         }
     }
 }

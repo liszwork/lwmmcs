@@ -20,12 +20,18 @@ namespace mmCreaterCs
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
+
         // 確定
         private void submit(string text)
         {
             if ( !isCreatedRoot )
             {
                 manager = new NodeManager(text);
+                labelCurrentName.Text = manager.GetCurrentName();
                 isCreatedRoot = true;
             }
             else
@@ -37,10 +43,13 @@ namespace mmCreaterCs
             updateList();
         }
 
+        /// <summary>
+        /// 現在Node選択用コンボボックスのアップデート
+        /// </summary>
         private void updateList()
         {
             comboBox1.Items.Clear();
-            comboBox1.Items.AddRange(manager.GetChildNames().ToArray());
+            comboBox1.Items.AddRange(manager.GetCurrentChildNames().ToArray());
         }
 
         /*******************************************************/
@@ -60,15 +69,28 @@ namespace mmCreaterCs
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // コンボボックスの選択
-            string selectedItem = comboBox1.SelectedItem.ToString();
-            manager.SetCurrentNode4Name(selectedItem);
         }
 
         private void buttonShow_Click(object sender, EventArgs e)
         {
+            // rootから辿ったNode情報を表示する
             textOutput.Text = "";
             textOutput.Text = manager.ShowAll();
+        }
+
+        private void buttonSetCurrent_Click(object sender, EventArgs e)
+        {
+            // コンボボックスで選択されているものを現在Nodeにセット
+            string selectedItem = comboBox1.SelectedItem.ToString();
+            manager.SetCurrentNode4Name(selectedItem);
+            labelCurrentName.Text = manager.GetCurrentName();
+            // 現在Nodeの子要素をコンボボックスにセット
+            updateList();
+        }
+
+        private void buttonPrevCurrent_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
