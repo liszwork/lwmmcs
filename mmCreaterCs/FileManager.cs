@@ -24,6 +24,12 @@ namespace mmCreaterCs
         {
             // nodeの情報出力
             XElement e = node.Element;
+            // 子要素ループ→子要素を回帰で渡す
+            foreach ( Node child in node.Childs )
+            {
+                CollectNode(child, e);
+            }
+            
             if ( elm == null )
             {
                 elm = e;
@@ -31,11 +37,6 @@ namespace mmCreaterCs
             else
             {
                 elm.Add(e);
-            }
-            // 子要素ループ→子要素を回帰で渡す
-            foreach ( Node child in node.Childs )
-            {
-                CollectNode(child, elm);
             }
 
             return elm;
@@ -64,6 +65,10 @@ namespace mmCreaterCs
             XDocument xml = new XDocument(map);
             // 保存
             xml.Save(targetFilePath);
+            // 先頭行(XMLヘッダ)を削除して保存しなおす
+            List<string> lines = System.IO.File.ReadAllLines(targetFilePath).ToList();
+            lines.RemoveAt(0);
+            System.IO.File.WriteAllLines(targetFilePath, lines);
 
             return true;
         }
