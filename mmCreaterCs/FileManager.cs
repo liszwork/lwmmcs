@@ -12,7 +12,7 @@ namespace mmCreaterCs
         /*
          * TOOD: ファイル未オープン時はファイル選択ダイアログで選択させる。\nそうでない場合、このファイル名を使用する。
          */
-        private static string targetFile = "";
+        private static string targetFilePath = "";
 
         /// <summary>
         /// 【回帰】NodeからXML要素を生成
@@ -54,24 +54,21 @@ namespace mmCreaterCs
                 return false;   // 選択不正
             }
 
-            //// root
-
-            //// 1番外枠の要素
+            // root
+            XElement rootElm = CollectNode(root);
+            // FreeMind上、1番外枠の要素(map)作成し、root追加
             XElement map = new XElement("map");
-            //map.SetAttributeValue("version", "1.0.1");
-            //map.Add(root);
-
+            map.SetAttributeValue("version", "1.0.1");
+            map.Add(rootElm);
+            // XMLに作成したNodeのXML要素を追加
             XDocument xml = new XDocument(map);
-
-            XElement elm = CollectNode(root);
-
-            // TODO: 先頭「map」に保存
-
-            // TODO: 保存
+            // 保存
+            xml.Save(targetFilePath);
 
             return true;
         }
 
+        // 保存先ファイルパスの取得
         private static string SelectOpenFile()
         {
             // TODO: ファイル選択処理の作成
@@ -87,14 +84,14 @@ namespace mmCreaterCs
         {
             if ( !overwrite )
             {
-                targetFile = SelectOpenFile();
+                targetFilePath = SelectOpenFile();
             }
-            if ( targetFile == "" )
+            if ( targetFilePath == "" )
             {
-                targetFile = SelectOpenFile();
+                targetFilePath = SelectOpenFile();
             }
 
-            return (targetFile != "");
+            return (targetFilePath != "");
         }
     }
 }
