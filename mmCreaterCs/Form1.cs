@@ -81,12 +81,19 @@ namespace mmCreaterCs
 
         private void buttonSetCurrent_Click(object sender, EventArgs e)
         {
-            // コンボボックスで選択されているものを現在Nodeにセット
-            string selectedItem = comboBox1.SelectedItem.ToString();
-            manager.SetCurrentNode4Name(selectedItem);
-            labelCurrentName.Text = manager.GetCurrentName();
-            // 現在Nodeの子要素をコンボボックスにセット
-            updateList();
+            try
+            {
+                // コンボボックスで選択されているものを現在Nodeにセット
+                string selectedItem = comboBox1.SelectedItem.ToString();
+                manager.SetCurrentNode4Name(selectedItem);
+                labelCurrentName.Text = manager.GetCurrentName();
+                // 現在Nodeの子要素をコンボボックスにセット
+                updateList();
+            }
+            catch ( Exception )
+            {
+                // NOP
+            }
             comboBox1.Text = "";
         }
 
