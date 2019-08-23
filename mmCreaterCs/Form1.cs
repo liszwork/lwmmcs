@@ -112,5 +112,10 @@ namespace mmCreaterCs
         {
             FileManager.Save(manager.Root);
         }
+
+        private void buttonLoad_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

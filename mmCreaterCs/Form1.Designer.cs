@@ -40,6 +40,7 @@
             this.labelCurrentName = new System.Windows.Forms.Label();
             this.buttonPrevCurrent = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonLoad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textOutput
@@ -49,7 +50,7 @@
             this.textOutput.Multiline = true;
             this.textOutput.Name = "textOutput";
             this.textOutput.Size = new System.Drawing.Size(337, 426);
-            this.textOutput.TabIndex = 0;
+            this.textOutput.TabIndex = 9;
             // 
             // textInput
             // 
@@ -83,7 +84,7 @@
             this.buttonShow.Location = new System.Drawing.Point(252, 261);
             this.buttonShow.Name = "buttonShow";
             this.buttonShow.Size = new System.Drawing.Size(75, 23);
-            this.buttonShow.TabIndex = 3;
+            this.buttonShow.TabIndex = 5;
             this.buttonShow.Text = "show nodes";
             this.buttonShow.UseVisualStyleBackColor = true;
             this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
@@ -93,7 +94,7 @@
             this.buttonSetCurrent.Location = new System.Drawing.Point(252, 155);
             this.buttonSetCurrent.Name = "buttonSetCurrent";
             this.buttonSetCurrent.Size = new System.Drawing.Size(75, 23);
-            this.buttonSetCurrent.TabIndex = 4;
+            this.buttonSetCurrent.TabIndex = 3;
             this.buttonSetCurrent.Text = "set current";
             this.buttonSetCurrent.UseVisualStyleBackColor = true;
             this.buttonSetCurrent.Click += new System.EventHandler(this.buttonSetCurrent_Click);
@@ -104,7 +105,7 @@
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 12);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 10;
             this.label1.Text = "current node ->";
             // 
             // label2
@@ -113,7 +114,7 @@
             this.label2.Location = new System.Drawing.Point(12, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 12);
-            this.label2.TabIndex = 5;
+            this.label2.TabIndex = 12;
             this.label2.Text = "add node";
             // 
             // label3
@@ -122,7 +123,7 @@
             this.label3.Location = new System.Drawing.Point(12, 142);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 12);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 0;
             this.label3.Text = "select current";
             // 
             // labelCurrentName
@@ -131,7 +132,7 @@
             this.labelCurrentName.Location = new System.Drawing.Point(103, 9);
             this.labelCurrentName.Name = "labelCurrentName";
             this.labelCurrentName.Size = new System.Drawing.Size(11, 12);
-            this.labelCurrentName.TabIndex = 5;
+            this.labelCurrentName.TabIndex = 11;
             this.labelCurrentName.Text = "-";
             // 
             // buttonPrevCurrent
@@ -139,7 +140,7 @@
             this.buttonPrevCurrent.Location = new System.Drawing.Point(252, 184);
             this.buttonPrevCurrent.Name = "buttonPrevCurrent";
             this.buttonPrevCurrent.Size = new System.Drawing.Size(75, 23);
-            this.buttonPrevCurrent.TabIndex = 6;
+            this.buttonPrevCurrent.TabIndex = 4;
             this.buttonPrevCurrent.Text = "prev current";
             this.buttonPrevCurrent.UseVisualStyleBackColor = true;
             this.buttonPrevCurrent.Click += new System.EventHandler(this.buttonPrevCurrent_Click);
@@ -154,11 +155,22 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // buttonLoad
+            // 
+            this.buttonLoad.Location = new System.Drawing.Point(136, 415);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoad.TabIndex = 6;
+            this.buttonLoad.Text = "load";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 450);
+            this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonPrevCurrent);
             this.Controls.Add(this.label2);
@@ -193,6 +205,7 @@
         private System.Windows.Forms.Label labelCurrentName;
         private System.Windows.Forms.Button buttonPrevCurrent;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonLoad;
     }
 }
 
