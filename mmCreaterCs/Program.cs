@@ -33,6 +33,20 @@ namespace mmCreaterCs
             testCreateXML();
             testCreateXML2();
             testCreateXML3();
+            testLoadXML();
+        }
+
+        private static void testLoadXML()
+        {
+            string path = @".\test.mm";
+            XDocument xml = XDocument.Load(path);
+            Console.WriteLine(xml.ToString());
+            List<XElement> elements = xml.Elements().ToList();
+            XElement map = elements[0];
+            List<XElement> root = map.ElementsAfterSelf().ToList();
+
+
+            return;
         }
 
         static void testCreateXML()

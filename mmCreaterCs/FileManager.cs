@@ -73,7 +73,17 @@ namespace mmCreaterCs
             return true;
         }
 
-        // 保存先ファイルパスの取得
+        public static bool Load()
+        {
+            string path = SelectOpenFile();
+
+            // TODO: ファイル読み込みしてNodeへ反映
+            XDocument xml = XDocument.Load(path);
+
+            return true;
+        }
+
+        // ファイルパスの取得
         private static string SelectOpenFile()
         {
             // TODO: ファイル選択処理の作成
