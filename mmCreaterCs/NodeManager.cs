@@ -12,6 +12,8 @@ namespace mmCreaterCs
         private Node root;
         private Node current;
 
+        internal Node Root { get => this.root; }
+
         /// <summary>
         /// コンストラクタ
         /// </summary>

@@ -37,6 +37,7 @@ namespace mmCreaterCs
         public string Name { get => this.name; set => this.name = value; }
         internal List<Node> Childs { get => this.child; set => this.child = value; }
         public Node Parent { get => this.parent; set => this.parent = value; }
+        public XElement Element { get => this.element; }
 
         /// <summary>
         /// コンストラクタ

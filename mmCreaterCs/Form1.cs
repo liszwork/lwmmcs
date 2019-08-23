@@ -87,6 +87,7 @@ namespace mmCreaterCs
             labelCurrentName.Text = manager.GetCurrentName();
             // 現在Nodeの子要素をコンボボックスにセット
             updateList();
+            comboBox1.Text = "";
         }
 
         private void buttonPrevCurrent_Click(object sender, EventArgs e)
@@ -98,6 +99,11 @@ namespace mmCreaterCs
             }
             // 現在Nodeの子要素をコンボボックスにセット
             updateList();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            FileManager.Save(manager.Root);
         }
     }
 }

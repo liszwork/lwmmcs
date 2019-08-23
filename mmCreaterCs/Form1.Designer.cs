@@ -39,6 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelCurrentName = new System.Windows.Forms.Label();
             this.buttonPrevCurrent = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textOutput
@@ -143,11 +144,22 @@
             this.buttonPrevCurrent.UseVisualStyleBackColor = true;
             this.buttonPrevCurrent.Click += new System.EventHandler(this.buttonPrevCurrent_Click);
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(252, 415);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 7;
+            this.buttonSave.Text = "save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 450);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonPrevCurrent);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -180,6 +192,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelCurrentName;
         private System.Windows.Forms.Button buttonPrevCurrent;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
 
