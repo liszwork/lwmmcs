@@ -186,9 +186,27 @@ namespace mmCreaterCs
         /// TODO: 子要素の削除
         /// </summary>
         /// <returns></returns>
-        public bool DeleteChild()
+        public bool DeleteChild(string id)
         {
+            Node findNode = null;
+            foreach ( Node child in this.Childs )
+            {
+                if ( child.id == id )
+                {
+                    findNode = child;
+                    break;
+                }
+            }
+            findNode.ShowMe();
+            //this.child.Remove();
             return true;
+        }
+
+        public void ShowMe()
+        {
+            StringBuilder sb = new StringBuilder(this.element.ToString());
+            sb.AppendFormat("Text={0}, ID={1} \r\n", this.name, this.id);
+            this.logger.Log(sb.ToString());
         }
 
         /// <summary>

@@ -116,6 +116,8 @@ namespace mmCreaterCs
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             this.manager = FileManager.Load();
+
+            manager.Root.DeleteChild("ID_762565249");
         }
     }
 }
