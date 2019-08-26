@@ -25,3 +25,27 @@ root-+-item1
 
 VisualStudio - GitHub連携
 https://opcdiary.net/visual-studio-2017%E3%81%A7git%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE%E7%99%BB%E9%8C%B2%E3%81%A8push%E3%81%BE%E3%81%A7%E3%81%AE%E6%B5%81%E3%82%8C/
+
+# mmの仕様に関するメモ
+
+各要素名は下記の様に取り扱う。
+
+root: ルート。中央オブジェクト。
+branch: 枝。各枝分かれの根幹。
+branch-root: 枝の根本要素。
+parent: ある要素の親要素。
+child: ある要素の子要素。
+
+## POSITION
+
+POSITIONは、下記のように効果する。
+
+設定Node | 効果
+root要素 | 指定のない全branchの配置を右/左に振り分ける
+branch-root | branchの配置を右/左に振り分ける
+branchのchild | 効果なし
+
+branch-root配下のchildにPOSITIONをセットした場合でも、branch-rootの位置に設置される。
+
+ex: branch-rootがPOSITIONなしで右配置のとき、childのPOSITION=leftとしても、このbranchは右配置となる。
+
