@@ -61,8 +61,8 @@ namespace mmCreaterCs
         /// <param name="position">"right"/"left"</param>
         public Node(string text, string position = "", Node parent = null)
         {
-            this.element = this.CreateNode(text, position);
             this.parent = parent;
+            this.element = this.CreateNode(text, position);
         }
 
         /// <summary>
@@ -72,8 +72,8 @@ namespace mmCreaterCs
         /// <param name="position">"right"/"left"</param>
         public Node(string text, string created, string id, string modified, string position = "", Node parent = null)
         {
-            this.element = this.CreateNode(text, created, id, modified, position);
             this.parent = parent;
+            this.element = this.CreateNode(text, created, id, modified, position);
         }
         
         /// <summary>
@@ -95,6 +95,31 @@ namespace mmCreaterCs
         }
 
         /// <summary>
+        /// POSITION属性を追加するか？
+        /// </summary>
+        /// <param name="position">設定するPOSITIONの値</param>
+        /// <returns>追加するか否か(true=追加する)</returns>
+        private bool IsAddPosition(string position)
+        {
+            if ( position == "" )
+            {
+                return false;
+            }
+            // このNodeはroot
+            if ( this.parent == null )
+            {
+                return true;
+            }
+            // このNodeはbranch-root
+            if ( this.parent.parent == null )
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Nodeの生成
         /// </summary>
         /// <param name="name">Nodeのテキスト</param>
@@ -111,6 +136,7 @@ namespace mmCreaterCs
             this.modified = (modified != "") ? modified : ids[attrKeymodified];
 
             XElement elm = new XElement("node");
+            // 必須属性の追加
             Dictionary<string, string> attr = new Dictionary<string, string>()
             {
                 { attrKeyCreated, this.created },
@@ -118,11 +144,12 @@ namespace mmCreaterCs
                 { attrKeymodified, this.modified },
                 { attrKeyText, this.name }
             };
-
-            if ( position == "" )
+            // 位置の追加: branch-rootかつPOSITIONあり
+            if ( this.IsAddPosition(position) )
             {
                 attr.Add(attrKeyPosition, position);
             }
+            // XElementに属性を付与
             this.AddAttr(attr, elm);
 
             return elm;
@@ -139,7 +166,6 @@ namespace mmCreaterCs
             XElement editNode = node;
             foreach ( var item in attrInfo )
             {
-                //XAttribute attr = CreateAttr(item.Key, item.Value);
                 editNode.SetAttributeValue(item.Key, item.Value);
             }
             return editNode;
