@@ -38,6 +38,10 @@ child: ある要素の子要素。
 
 ## POSITION
 
+branchの位置を設定する。
+
+### 効果
+
 POSITIONは、下記のように効果する。
 
 設定Node | 効果
@@ -49,3 +53,8 @@ branch-root配下のchildにPOSITIONをセットした場合でも、branch-root
 
 ex: branch-rootがPOSITIONなしで右配置のとき、childのPOSITION=leftとしても、このbranchは右配置となる。
 
+### 設定するNode
+
+FreeMindで生成した場合、branch-rootにのみ設定される。
+
+ただし、効果に記載があるように、rootに設定した場合は、表示に対して効力がある。
