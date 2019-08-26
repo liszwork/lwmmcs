@@ -25,6 +25,16 @@ namespace mmCreaterCs
         }
 
         /// <summary>
+        /// Node構成を作成済みのものを直接セット
+        /// </summary>
+        /// <param name="node"></param>
+        public NodeManager(Node node)
+        {
+            root = node;
+            current = node;
+        }
+
+        /// <summary>
         /// Nodeの追加
         /// </summary>
         /// <param name="text">追加するNodeのテキスト</param>
