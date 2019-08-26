@@ -73,6 +73,12 @@ namespace mmCreaterCs
             return true;
         }
 
+        /// <summary>
+        /// XElementから指定の属性値を取得
+        /// </summary>
+        /// <param name="element">対象XElement</param>
+        /// <param name="attrName">取得する属性名</param>
+        /// <returns>属性の値(存在しない場合、null)</returns>
         private static string GetAttr(XElement element, string attrName)
         {
             XAttribute attr = element.Attribute(attrName);
