@@ -197,8 +197,9 @@ namespace mmCreaterCs
                     break;
                 }
             }
+            this.logger.Log("--DeleteChild--\r\n");
             findNode.ShowMe();
-            //this.child.Remove();
+            this.child.Remove(findNode);
             return true;
         }
 
