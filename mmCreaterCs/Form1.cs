@@ -31,6 +31,7 @@ namespace mmCreaterCs
         private void UpdateCurrent()
         {
             this.labelCurrentName.Text = this.manager.GetCurrentName();
+            this.UpdateList();
         }
 
         // 確定
@@ -49,7 +50,7 @@ namespace mmCreaterCs
             }
             this.textInput.Text = "";
 
-            this.UpdateList();
+            //this.UpdateList();
         }
 
         /// <summary>
@@ -84,7 +85,7 @@ namespace mmCreaterCs
         {
             // rootから辿ったNode情報を表示する
             this.textOutput.Text = "";
-            this.textOutput.Text = manager.ShowAll();
+            this.textOutput.Text = this.manager.ShowAll();
         }
 
         private void buttonSetCurrent_Click(object sender, EventArgs e)
@@ -96,7 +97,7 @@ namespace mmCreaterCs
                 this.manager.SetCurrentNode4Name(selectedItem);
                 this.UpdateCurrent();
                 // 現在Nodeの子要素をコンボボックスにセット
-                this.UpdateList();
+                //this.UpdateList();
             }
             catch ( Exception )
             {
@@ -124,6 +125,7 @@ namespace mmCreaterCs
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             this.manager = FileManager.Load();
+            this.UpdateCurrent();
         }
 
         private void textEditNodeName_Enter(object sender, EventArgs e)
