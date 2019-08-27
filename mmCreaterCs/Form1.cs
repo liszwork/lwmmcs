@@ -119,5 +119,34 @@ namespace mmCreaterCs
 
             manager.Root.DeleteChild("ID_762565249");
         }
+
+        private void textEditNodeName_Enter(object sender, EventArgs e)
+        {
+            if ( textEditNodeName.Text == "edit node name" )
+            {
+                textEditNodeName.Text = "";
+            }
+        }
+
+        private void textEditNodeName_Leave(object sender, EventArgs e)
+        {
+            if ( textEditNodeName.Text == "" )
+            {
+                textEditNodeName.Text = "edit node name";
+            }
+        }
+
+        private void textEditNodeName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ( e.KeyCode == Keys.Enter )
+            {
+                // TODO
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            // TODO:
+        }
     }
 }

@@ -41,6 +41,9 @@
             this.buttonPrevCurrent = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonLoad = new System.Windows.Forms.Button();
+            this.textEditNodeName = new System.Windows.Forms.TextBox();
+            this.labelModify = new System.Windows.Forms.Label();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textOutput
@@ -81,10 +84,10 @@
             // 
             // buttonShow
             // 
-            this.buttonShow.Location = new System.Drawing.Point(252, 261);
+            this.buttonShow.Location = new System.Drawing.Point(252, 333);
             this.buttonShow.Name = "buttonShow";
             this.buttonShow.Size = new System.Drawing.Size(75, 23);
-            this.buttonShow.TabIndex = 5;
+            this.buttonShow.TabIndex = 6;
             this.buttonShow.Text = "show nodes";
             this.buttonShow.UseVisualStyleBackColor = true;
             this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
@@ -150,7 +153,7 @@
             this.buttonSave.Location = new System.Drawing.Point(252, 415);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 7;
+            this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -160,16 +163,49 @@
             this.buttonLoad.Location = new System.Drawing.Point(136, 415);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoad.TabIndex = 6;
+            this.buttonLoad.TabIndex = 7;
             this.buttonLoad.Text = "load";
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
+            // 
+            // textEditNodeName
+            // 
+            this.textEditNodeName.Location = new System.Drawing.Point(12, 240);
+            this.textEditNodeName.Name = "textEditNodeName";
+            this.textEditNodeName.Size = new System.Drawing.Size(234, 19);
+            this.textEditNodeName.TabIndex = 5;
+            this.textEditNodeName.Text = "edit node name";
+            this.textEditNodeName.Enter += new System.EventHandler(this.textEditNodeName_Enter);
+            this.textEditNodeName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEditNodeName_KeyUp);
+            this.textEditNodeName.Leave += new System.EventHandler(this.textEditNodeName_Leave);
+            // 
+            // labelModify
+            // 
+            this.labelModify.AutoSize = true;
+            this.labelModify.Location = new System.Drawing.Point(12, 225);
+            this.labelModify.Name = "labelModify";
+            this.labelModify.Size = new System.Drawing.Size(39, 12);
+            this.labelModify.TabIndex = 13;
+            this.labelModify.Text = "modify";
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(252, 4);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 9;
+            this.buttonDelete.Text = "delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 450);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.labelModify);
+            this.Controls.Add(this.textEditNodeName);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonPrevCurrent);
@@ -206,6 +242,9 @@
         private System.Windows.Forms.Button buttonPrevCurrent;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonLoad;
+        private System.Windows.Forms.TextBox textEditNodeName;
+        private System.Windows.Forms.Label labelModify;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
 
