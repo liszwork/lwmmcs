@@ -77,18 +77,7 @@ namespace mmCreaterCs
             this.Submit(textInput.Text);
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void buttonShow_Click(object sender, EventArgs e)
-        {
-            // rootから辿ったNode情報を表示する
-            this.textOutput.Text = "";
-            this.textOutput.Text = this.manager.ShowAll();
-        }
-
-        private void buttonSetCurrent_Click(object sender, EventArgs e)
+        private void ChangeCurrentForChild()
         {
             try
             {
@@ -104,6 +93,23 @@ namespace mmCreaterCs
                 // NOP
             }
             this.comboBox1.Text = "";
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeCurrentForChild();
+        }
+
+        private void buttonShow_Click(object sender, EventArgs e)
+        {
+            // rootから辿ったNode情報を表示する
+            this.textOutput.Text = "";
+            this.textOutput.Text = this.manager.ShowAll();
+        }
+
+        private void buttonSetCurrent_Click(object sender, EventArgs e)
+        {
+            ChangeCurrentForChild();
         }
 
         private void buttonPrevCurrent_Click(object sender, EventArgs e)

@@ -57,34 +57,35 @@
             // 
             // textInput
             // 
-            this.textInput.Location = new System.Drawing.Point(12, 77);
+            this.textInput.Location = new System.Drawing.Point(94, 106);
             this.textInput.Name = "textInput";
-            this.textInput.Size = new System.Drawing.Size(234, 19);
-            this.textInput.TabIndex = 0;
+            this.textInput.Size = new System.Drawing.Size(233, 19);
+            this.textInput.TabIndex = 3;
             this.textInput.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textInput_KeyUp);
             // 
             // buttonEnter
             // 
-            this.buttonEnter.Location = new System.Drawing.Point(252, 75);
+            this.buttonEnter.Location = new System.Drawing.Point(252, 131);
             this.buttonEnter.Name = "buttonEnter";
             this.buttonEnter.Size = new System.Drawing.Size(75, 23);
-            this.buttonEnter.TabIndex = 1;
+            this.buttonEnter.TabIndex = 4;
             this.buttonEnter.Text = "Enter";
             this.buttonEnter.UseVisualStyleBackColor = true;
+            this.buttonEnter.Visible = false;
             this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 157);
+            this.comboBox1.Location = new System.Drawing.Point(94, 53);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(234, 20);
-            this.comboBox1.TabIndex = 2;
+            this.comboBox1.Size = new System.Drawing.Size(152, 20);
+            this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // buttonShow
             // 
-            this.buttonShow.Location = new System.Drawing.Point(252, 333);
+            this.buttonShow.Location = new System.Drawing.Point(252, 352);
             this.buttonShow.Name = "buttonShow";
             this.buttonShow.Size = new System.Drawing.Size(75, 23);
             this.buttonShow.TabIndex = 6;
@@ -94,12 +95,13 @@
             // 
             // buttonSetCurrent
             // 
-            this.buttonSetCurrent.Location = new System.Drawing.Point(252, 155);
+            this.buttonSetCurrent.Location = new System.Drawing.Point(252, 33);
             this.buttonSetCurrent.Name = "buttonSetCurrent";
             this.buttonSetCurrent.Size = new System.Drawing.Size(75, 23);
-            this.buttonSetCurrent.TabIndex = 3;
+            this.buttonSetCurrent.TabIndex = 1;
             this.buttonSetCurrent.Text = "set current";
             this.buttonSetCurrent.UseVisualStyleBackColor = true;
+            this.buttonSetCurrent.Visible = false;
             this.buttonSetCurrent.Click += new System.EventHandler(this.buttonSetCurrent_Click);
             // 
             // label1
@@ -114,7 +116,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 62);
+            this.label2.Location = new System.Drawing.Point(12, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 12);
             this.label2.TabIndex = 12;
@@ -123,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 142);
+            this.label3.Location = new System.Drawing.Point(12, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 12);
             this.label3.TabIndex = 0;
@@ -140,10 +142,10 @@
             // 
             // buttonPrevCurrent
             // 
-            this.buttonPrevCurrent.Location = new System.Drawing.Point(252, 184);
+            this.buttonPrevCurrent.Location = new System.Drawing.Point(252, 51);
             this.buttonPrevCurrent.Name = "buttonPrevCurrent";
             this.buttonPrevCurrent.Size = new System.Drawing.Size(75, 23);
-            this.buttonPrevCurrent.TabIndex = 4;
+            this.buttonPrevCurrent.TabIndex = 2;
             this.buttonPrevCurrent.Text = "prev current";
             this.buttonPrevCurrent.UseVisualStyleBackColor = true;
             this.buttonPrevCurrent.Click += new System.EventHandler(this.buttonPrevCurrent_Click);
@@ -170,9 +172,9 @@
             // 
             // textEditNodeName
             // 
-            this.textEditNodeName.Location = new System.Drawing.Point(12, 240);
+            this.textEditNodeName.Location = new System.Drawing.Point(94, 160);
             this.textEditNodeName.Name = "textEditNodeName";
-            this.textEditNodeName.Size = new System.Drawing.Size(234, 19);
+            this.textEditNodeName.Size = new System.Drawing.Size(233, 19);
             this.textEditNodeName.TabIndex = 5;
             this.textEditNodeName.Text = "edit node name";
             this.textEditNodeName.Enter += new System.EventHandler(this.textEditNodeName_Enter);
@@ -182,7 +184,7 @@
             // labelModify
             // 
             this.labelModify.AutoSize = true;
-            this.labelModify.Location = new System.Drawing.Point(12, 225);
+            this.labelModify.Location = new System.Drawing.Point(12, 163);
             this.labelModify.Name = "labelModify";
             this.labelModify.Size = new System.Drawing.Size(39, 12);
             this.labelModify.TabIndex = 13;
