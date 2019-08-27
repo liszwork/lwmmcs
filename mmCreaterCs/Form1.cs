@@ -124,8 +124,6 @@ namespace mmCreaterCs
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             this.manager = FileManager.Load();
-
-            this.manager.Root.DeleteChild("ID_762565249");
         }
 
         private void textEditNodeName_Enter(object sender, EventArgs e)
