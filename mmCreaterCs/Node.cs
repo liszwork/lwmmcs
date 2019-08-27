@@ -183,11 +183,13 @@ namespace mmCreaterCs
         }
 
         /// <summary>
-        /// TODO: 子要素の削除
+        /// 子要素の削除
         /// </summary>
-        /// <returns></returns>
+        /// <param name="id">削除対象のID</param>
+        /// <returns>結果</returns>
         public bool DeleteChild(string id)
         {
+            this.logger.Log("--DeleteChild--\r\n");
             Node findNode = null;
             foreach ( Node child in this.Childs )
             {
@@ -197,7 +199,12 @@ namespace mmCreaterCs
                     break;
                 }
             }
-            this.logger.Log("--DeleteChild--\r\n");
+            if ( findNode == null )
+            {
+                this.logger.Log("Delete target ID NOT FOUND(" + id + ")\r\n");
+                return false;
+            }
+            
             findNode.ShowMe();
             this.child.Remove(findNode);
             return true;
