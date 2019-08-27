@@ -47,6 +47,7 @@ namespace mmCreaterCs
         internal List<Node> Childs { get => this.child; set => this.child = value; }
         public Node Parent { get => this.parent; set => this.parent = value; }
         public XElement Element { get => this.element; }
+        public string Id { get => this.id; }
 
         //public string AttrKeyCreated => this.attrKeyCreated;
         //public string AttrKeyId => this.attrKeyId;

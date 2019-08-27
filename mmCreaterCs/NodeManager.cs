@@ -174,7 +174,36 @@ namespace mmCreaterCs
             }
             this.current = this.current.Parent;
             string name = this.current.Name;
-            return (name == null) ? "" : name;
+            return name ?? "";
+        }
+
+        /// <summary>
+        /// currentがrootか？
+        /// </summary>
+        /// <returns>true=root</returns>
+        public bool IsCurrentRoot()
+        {
+            return this.current == this.root;
+        }
+
+        /// <summary>
+        /// 現在のcurrentを削除する。
+        /// currentの親をcurrentにする。
+        /// </summary>
+        /// <returns>削除結果(true=削除成功)</returns>
+        public bool DeleteCurrent()
+        {
+            if ( this.IsCurrentRoot() )
+            {
+                // ルートは削除不可
+                return false;
+            }
+
+            string targetId = this.current.Id;
+            this.current = this.current.Parent;
+            bool result = this.current.DeleteChild(targetId);
+
+            return result;
         }
     }
 }

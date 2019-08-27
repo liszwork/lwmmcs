@@ -25,32 +25,40 @@ namespace mmCreaterCs
             
         }
 
-        // 確定
-        private void submit(string text)
+        /// <summary>
+        /// カレント表示を現在のカレントで更新
+        /// </summary>
+        private void UpdateCurrent()
         {
-            if ( !isCreatedRoot )
+            this.labelCurrentName.Text = this.manager.GetCurrentName();
+        }
+
+        // 確定
+        private void Submit(string text)
+        {
+            if ( !this.isCreatedRoot )
             {
                 // root
-                manager = new NodeManager(text);
-                labelCurrentName.Text = manager.GetCurrentName();
-                isCreatedRoot = true;
+                this.manager = new NodeManager(text);
+                this.UpdateCurrent();
+                this.isCreatedRoot = true;
             }
             else
             {
-                manager.Add(textInput.Text);     // 入力確定処理
+                manager.Add(this.textInput.Text);     // 入力確定処理
             }
-            textInput.Text = "";
+            this.textInput.Text = "";
 
-            updateList();
+            this.UpdateList();
         }
 
         /// <summary>
         /// 現在Node選択用コンボボックスのアップデート
         /// </summary>
-        private void updateList()
+        private void UpdateList()
         {
-            comboBox1.Items.Clear();
-            comboBox1.Items.AddRange(manager.GetCurrentChildNames().ToArray());
+            this.comboBox1.Items.Clear();
+            this.comboBox1.Items.AddRange(this.manager.GetCurrentChildNames().ToArray());
         }
 
         /*******************************************************/
@@ -59,13 +67,13 @@ namespace mmCreaterCs
         {
             if ( e.KeyCode == Keys.Enter )
             {
-                submit(textInput.Text);
+                this.Submit(textInput.Text);
             }
         }
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
-            submit(textInput.Text);
+            this.Submit(textInput.Text);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,8 +83,8 @@ namespace mmCreaterCs
         private void buttonShow_Click(object sender, EventArgs e)
         {
             // rootから辿ったNode情報を表示する
-            textOutput.Text = "";
-            textOutput.Text = manager.ShowAll();
+            this.textOutput.Text = "";
+            this.textOutput.Text = manager.ShowAll();
         }
 
         private void buttonSetCurrent_Click(object sender, EventArgs e)
@@ -84,17 +92,17 @@ namespace mmCreaterCs
             try
             {
                 // コンボボックスで選択されているものを現在Nodeにセット
-                string selectedItem = comboBox1.SelectedItem.ToString();
-                manager.SetCurrentNode4Name(selectedItem);
-                labelCurrentName.Text = manager.GetCurrentName();
+                string selectedItem = this.comboBox1.SelectedItem.ToString();
+                this.manager.SetCurrentNode4Name(selectedItem);
+                this.UpdateCurrent();
                 // 現在Nodeの子要素をコンボボックスにセット
-                updateList();
+                this.UpdateList();
             }
             catch ( Exception )
             {
                 // NOP
             }
-            comboBox1.Text = "";
+            this.comboBox1.Text = "";
         }
 
         private void buttonPrevCurrent_Click(object sender, EventArgs e)
@@ -102,10 +110,10 @@ namespace mmCreaterCs
             string name = this.manager.PrevNode();
             if ( name != "" )
             {
-                labelCurrentName.Text = name;
+                this.labelCurrentName.Text = name;
             }
             // 現在Nodeの子要素をコンボボックスにセット
-            updateList();
+            this.UpdateList();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -117,22 +125,22 @@ namespace mmCreaterCs
         {
             this.manager = FileManager.Load();
 
-            manager.Root.DeleteChild("ID_762565249");
+            this.manager.Root.DeleteChild("ID_762565249");
         }
 
         private void textEditNodeName_Enter(object sender, EventArgs e)
         {
-            if ( textEditNodeName.Text == "edit node name" )
+            if ( this.textEditNodeName.Text == "edit node name" )
             {
-                textEditNodeName.Text = "";
+                this.textEditNodeName.Text = "";
             }
         }
 
         private void textEditNodeName_Leave(object sender, EventArgs e)
         {
-            if ( textEditNodeName.Text == "" )
+            if ( this.textEditNodeName.Text == "" )
             {
-                textEditNodeName.Text = "edit node name";
+                this.textEditNodeName.Text = "edit node name";
             }
         }
 
@@ -146,7 +154,11 @@ namespace mmCreaterCs
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            // TODO:
+            if ( !this.manager.DeleteCurrent() )
+            {
+                return;
+            }
+            this.UpdateCurrent();
         }
     }
 }
