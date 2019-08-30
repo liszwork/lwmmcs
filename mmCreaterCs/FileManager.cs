@@ -102,7 +102,7 @@ namespace mmCreaterCs
                 // 各Attr設定
                 string created = GetAttr(element, Node.attrKeyCreated);
                 string id = GetAttr(element, Node.attrKeyId);
-                string modified = GetAttr(element, Node.attrKeymodified);
+                string modified = GetAttr(element, Node.attrKeyModified);
                 string position = GetAttr(element, Node.attrKeyPosition);
 
                 node = new Node(name, created, id, modified, position, parent);

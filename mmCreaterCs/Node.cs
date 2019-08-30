@@ -22,7 +22,7 @@ namespace mmCreaterCs
         public static readonly string keyNode = "node";
         public static readonly string attrKeyCreated = "CREATED";
         public static readonly string attrKeyId = "ID";
-        public static readonly string attrKeymodified = "MODIFIED";
+        public static readonly string attrKeyModified = "MODIFIED";
         public static readonly string attrKeyPosition = "POSITION";
         public static readonly string attrKeyText = "TEXT";
 
@@ -77,20 +77,26 @@ namespace mmCreaterCs
             this.element = this.CreateNode(text, created, id, modified, position);
         }
         
+        private string GetDatetimeID()
+        {
+            DateTime dt = DateTime.Now;
+            return String.Format("{0:yyMMddHHmmssf}", dt);
+        }
+
         /// <summary>
         /// 属性値の生成
         /// </summary>
         /// <returns></returns>
         private Dictionary<string, string> GetAttrs()
         {
-            DateTime dt = DateTime.Now;
-            string created = String.Format("{0:yyMMddHHmmssf}", dt);
-            string id = String.Format("ID_{0:yyMMddHHmmssf}", dt); ;
+            string datetimeId = GetDatetimeID();
+            string created = datetimeId;
+            string id = "ID_" + datetimeId;
             Dictionary<string, string> ids = new Dictionary<string, string>()
             {
                 { attrKeyCreated,  created },
                 { attrKeyId, id },
-                { attrKeymodified, created }
+                { attrKeyModified, created }
             };
             return ids;
         }
@@ -134,7 +140,7 @@ namespace mmCreaterCs
             Dictionary<string, string> ids = GetAttrs();
             this.created = (created != "") ? created : ids[attrKeyCreated];
             this.id = (id != "") ? id : ids[attrKeyId];
-            this.modified = (modified != "") ? modified : ids[attrKeymodified];
+            this.modified = (modified != "") ? modified : ids[attrKeyModified];
 
             XElement elm = new XElement("node");
             // 必須属性の追加
@@ -142,7 +148,7 @@ namespace mmCreaterCs
             {
                 { attrKeyCreated, this.created },
                 { attrKeyId, this.id },
-                { attrKeymodified, this.modified },
+                { attrKeyModified, this.modified },
                 { attrKeyText, this.name }
             };
             // 位置の追加: branch-rootかつPOSITIONあり
@@ -172,6 +178,39 @@ namespace mmCreaterCs
             return editNode;
         }
         
+        /// <summary>
+        /// Nodeの情報を更新
+        /// </summary>
+        private void UpdateAttr(string name)
+        {
+            // TEXT
+            this.element.SetAttributeValue(attrKeyText, name);
+
+            // MODIFIED
+            string modifyId = this.GetDatetimeID();
+            this.modified = modifyId;
+            this.element.SetAttributeValue(attrKeyModified, modifyId);
+        }
+
+        /// <summary>
+        /// 変更
+        /// </summary>
+        /// <param name="name">変更するNodeの名称(TEXT)</param>
+        /// <returns>変更結果</returns>
+        public bool Modify(string name)
+        {
+            if ( name == "" )
+            {
+                return false;
+            }
+            // Nameを更新
+            this.name = name;
+            // XElementの属性を更新
+            this.UpdateAttr(name);
+
+            return true;
+        }
+
         /// <summary>
         /// 子要素の追加
         /// </summary>

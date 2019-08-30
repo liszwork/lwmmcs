@@ -187,6 +187,16 @@ namespace mmCreaterCs
         }
 
         /// <summary>
+        /// 変更
+        /// </summary>
+        /// <param name="name">変更値</param>
+        /// <returns>結果</returns>
+        public bool ModifyCurrent(string name)
+        {
+            return this.current.Modify(name);
+        }
+
+        /// <summary>
         /// 現在のcurrentを削除する。
         /// currentの親をcurrentにする。
         /// </summary>

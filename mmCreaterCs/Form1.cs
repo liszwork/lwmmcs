@@ -154,7 +154,12 @@ namespace mmCreaterCs
         {
             if ( e.KeyCode == Keys.Enter )
             {
-                // TODO
+                if ( this.textEditNodeName.Text == "" )
+                {
+                    return;
+                }
+
+                this.manager.ModifyCurrent(this.textEditNodeName.Text);
             }
         }
 
