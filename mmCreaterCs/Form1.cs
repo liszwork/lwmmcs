@@ -158,8 +158,10 @@ namespace mmCreaterCs
                 {
                     return;
                 }
-
+                
                 this.manager.ModifyCurrent(this.textEditNodeName.Text);
+                this.textEditNodeName.Text = "";
+                this.UpdateCurrent();
             }
         }
 
